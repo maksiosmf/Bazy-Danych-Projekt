@@ -29,6 +29,7 @@ Rejestrowanie nowych klientów oraz zarządzanie ich danymi, takimi jak imiona, 
 
 Zarządzanie zamówieniami:
 Przyjmowanie i przetwarzanie zamówień składanych przez klientów.
+Dodawanie i usuwanie zamówień zrealizowanych lub nie.
 
 Integracja z systemami płatności i logistyki:
 Integracja z zewnętrznymi systemami płatniczymi umożliwiająca bezpieczne przeprowadzanie transakcji.
