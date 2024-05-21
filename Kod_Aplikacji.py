@@ -31,7 +31,7 @@ def show_all_customers():
         customer_list.insert(tk.END, f"{customer[0]} - {customer[1]} {customer[2]} - {customer[3]}")
 
 def add_customer():
-    add_window = create_window("Add New Customer", 400, 300)
+    add_window = create_window("Add New Customer", 800, 600)
     tk.Label(add_window, text="First Name:", font=('Helvetica', 10)).pack(pady=5)
     first_name_entry = tk.Entry(add_window, font=('Helvetica', 10))
     first_name_entry.pack(pady=5)
@@ -125,7 +125,7 @@ def show_products():
     tk.Button(select_window, text="Edit Products", command=edit_products, bg='#4682b4', font=('Helvetica', 12), fg='white').pack(pady=10)
 
 def show_all_products():
-    select_window = create_window("All Products", 400, 300)
+    select_window = create_window("All Products", 800, 600)
     cursor = conn.cursor()
     cursor.execute(
         "SELECT p.id_produktu, p.nazwa, p.cena, k.nazwa AS kategoria FROM produkty p INNER JOIN kategorie k ON p.id_kategorii = k.id_kategorii")
@@ -135,7 +135,7 @@ def show_all_products():
         tk.Label(select_window, text=product_info, bg='#f5f5dc', font=('Helvetica', 10)).pack(pady=2)
 
 def add_product():
-    add_window = create_window("Add New Product", 400, 300)
+    add_window = create_window("Add New Product", 800, 600)
     tk.Label(add_window, text="Product Name:", font=('Helvetica', 10)).pack(pady=5)
     product_name_entry = tk.Entry(add_window, font=('Helvetica', 10))
     product_name_entry.pack(pady=5)
@@ -272,7 +272,7 @@ def show_all_orders():
             order_list.insert(tk.END, f"  Product: {product[0]}, Quantity: {product[1]}, Unit Price: {product[2]:.2f} PLN")
 
 def add_order():
-    add_window = create_window("Add New Order", 500, 400)
+    add_window = create_window("Add New Order", 800, 600)
     tk.Label(add_window, text="Customer:", font=('Helvetica', 10)).pack(pady=5)
     cursor = conn.cursor()
     cursor.execute("SELECT id_klienta, imie, nazwisko FROM klienci")
@@ -413,7 +413,7 @@ def select_customer_for_sale(is_regular):
 
     else:
         def create_new_customer():
-            add_window = create_window("Add New Customer", 400, 300)
+            add_window = create_window("Add New Customer", 800, 600)
             tk.Label(add_window, text="First Name:", font=('Helvetica', 10)).pack(pady=5)
             first_name_entry = tk.Entry(add_window, font=('Helvetica', 10))
             first_name_entry.pack(pady=5)
@@ -432,8 +432,8 @@ def select_customer_for_sale(is_regular):
                     cursor = conn.cursor()
                     cursor.execute("SELECT ISNULL(MAX(id_klienta), 0) + 1 FROM klienci")
                     new_customer_id = cursor.fetchone()[0]
-                    cursor.execute("INSERT INTO klienci (id_klienta, imie, nazwisko, email) VALUES (?, ?, ?, ?)",
-                                   (new_customer_id, first_name, last_name, email))
+                    cursor.execute("INSERT INTO klienci (imie, nazwisko, email) VALUES (?, ?, ?)",
+                                   (first_name, last_name, email))
                     conn.commit()
                     msgbox.showinfo("Success", f"New customer added: {first_name} {last_name}, Email: {email}")
                     add_window.destroy()
@@ -461,7 +461,7 @@ def show_all_categories():
         category_list.insert(tk.END, f"{category[0]} - {category[1]}")
 
 def add_category():
-    add_window = create_window("Add New Category", 400, 300)
+    add_window = create_window("Add New Category", 800, 600)
     tk.Label(add_window, text="Category Name:", font=('Helvetica', 10)).pack(pady=5)
     category_name_entry = tk.Entry(add_window, font=('Helvetica', 10))
     category_name_entry.pack(pady=5)
